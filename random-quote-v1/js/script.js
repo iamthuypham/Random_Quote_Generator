@@ -10,11 +10,18 @@ var quote
 var source
 var citation
 var year
+var randomNum = Math.floor(Math.random() * maxNum) + 1;
 
 //Create a function named getRandomQuote which:
-function getRandomQuote
-randomNum = round.ceil(Math.random() * maxNum) + 1
+function getRandomQuote(quote, source, citation, year) {
+  var randomQuote = "This is the " + quote + "from" + source + ". Here is " + citation + "and " + year 
+  return randomQuote;
+}
 
-
+getRandomQuote(randomNum);
 //Create a function named printQuote which follows these rules:
-function printQuote
+function printQuote() {
+
+}
+
+printQuote();
