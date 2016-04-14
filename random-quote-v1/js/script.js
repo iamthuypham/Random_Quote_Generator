@@ -15,6 +15,16 @@ function getRandomQuote(){
   var position = Math.floor(Math.random() * quoteList.length) + 1;//Select a random position in the list of quote
   return quoteList[position];
 };
+//Create getrandomColor function
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i += 1 ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
+
 //Create printQuote function
 function printQuote(){
   var quoteObject = getRandomQuote(); //store return object from getRandomQuote function
@@ -23,7 +33,11 @@ function printQuote(){
   html += '<p class="source">'+quoteObject.source+'</p>';
   html += '<span class="citation">'+quoteObject.citation+'</span>';
   html += '<span class="year">'+quoteObject.year+'</span>';
-  document.getElementById('quote-box').innerHTML = html; //apply the string to the index page
+  document.getElementById('quote-box').innerHTML = html; //apply the string to the quote box
+
+  var color = getRandomColor();//prepare html string for <body> style
+  colorHTML = 'body { background-color: '+ color + ';' + 'color: white; font-family: "Playfair Display", serif;}';
+  document.getElementById('style').innerHTML = colorHTML; //apply random color to the body
 };
 
 //check if the new random position is in new list of position or not
