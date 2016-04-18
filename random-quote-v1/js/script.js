@@ -12,33 +12,53 @@ var quoteList = [
 
 //Create getRandomQuote function
 function getRandomQuote(){
-  var position = Math.floor(Math.random() * quoteList.length) + 1;//Select a random position in the list of quote
+  var position = Math.floor(Math.random() * quoteList.length);//Select a random position in the list of quote
   return quoteList[position];
-};
+}
 //Create getrandomColor function
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
     for (var i = 0; i < 6; i += 1 ) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
+        color += letters[Math.floor(Math.random() * 16)];}
     return color;
-};
+}
 
 //Create printQuote function
 function printQuote(){
   var quoteObject = getRandomQuote(); //store return object from getRandomQuote function
   var html = ''; //prepare html string for each properties
   html += '<p class="quote">'+quoteObject.quote+'</p>';
-  html += '<p class="source">'+quoteObject.source+'</p>';
-  html += '<span class="citation">'+quoteObject.citation+'</span>';
-  html += '<span class="year">'+quoteObject.year+'</span>';
+  html += '\n <p class="source">'+quoteObject.source;
+  if (typeof quoteObject.citation === 'undefined'){
+    html += '<span class="citation">'+''+'</span>';
+  } else {
+    html += '<span class="citation">'+ quoteObject.citation+'</span>';
+  };
+  if (typeof quoteObject.year === 'undefined'){
+    html += '<span class="year">'+ '' +'</span>';
+  } else {
+    html += '<span class="year">'+quoteObject.year+'</span>';
+    html += '</p>';
+  };
+
+//<p class="source">David Allen<span class="citation">Making It All Work</span><span class="year">2009</span></p>
+
   document.getElementById('quote-box').innerHTML = html; //apply the string to the quote box
 
   var color = getRandomColor();//prepare html string for <body> style
-  colorHTML = 'body { background-color: '+ color + ';' + 'color: white; font-family: "Playfair Display", serif;}';
-  document.getElementById('style').innerHTML = colorHTML; //apply random color to the body
+  var colorHTML = 'body { background-color: '+ color + '; color: white; font-family: "Playfair Display", serif;}';
+  if (typeof quoteObject.citation === 'undefined'){
+    colorHTML += '.citation:before { content: "";font-style: normal;} ';
+  } else {
+    colorHTML += '.citation:before {content: ", "; font-style: normal;}'
 };
-
+  if (typeof quoteObject.year === 'undefined'){
+    colorHTML += '.year:before { content: "";font-style: normal;} ';
+  } else {
+    colorHTML += '.year:before {content: ", "; font-style: normal;}'
+};
+  document.getElementById('style').innerHTML = colorHTML; //apply random color to the body
+}
 //check if the new random position is in new list of position or not
 //newList.indexOf(position)
