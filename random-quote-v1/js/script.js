@@ -1,7 +1,7 @@
-// event listener to respond to clicks on the page
-// when user clicks anywhere on the page, the "makeQuote" function is called
+//Everytime click on button will run printQuote function
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-//Create an array of JavaScript objects to hold the data for your quotes.
+
+//Array for all quote objects
 var quoteList = [
   { quote : 'There are no limits. There are plateaus, but you must not stay there, you must go beyond them.', source : 'Bruce Lee', year : 1998, tag : 'life' },
   { quote : 'You cannot escape the responsibility of tomorrow by evading it today.', source : 'Abraham Lincoln', citation :'Wise Words and Quotes' , year : 2000, tag : 'career' },
@@ -9,6 +9,7 @@ var quoteList = [
   { quote : 'Motivation is what gets you started. Habit is what keeps you going.', source : 'Jim Rohn', tag : 'motivation' },
   { quote : 'The best way to find yourself is to lose yourself in the service of others', source : 'Mahatma Gandhi', citation : 'The Full Spectrum Synthesis Bible',year : 2001, tag : 'life' }
 ];
+//Array to keep track of quote already displayed
 var oldPosition = [];
 
 //Create getRandomQuote function
@@ -16,13 +17,13 @@ function getRandomQuote(){
   do {
     for (position = 0; position < quoteList.length; position +=1) {
       var position = Math.floor(Math.random() * quoteList.length);//Select a random position in the list of quote
-      if (oldPosition.indexOf(position) == -1) {
-        oldPosition.push(position);
+      if (oldPosition.indexOf(position) == -1) { //Condition: if a quote not displayed yet, display that quote
+        oldPosition.push(position); // Add the position of the quote to the array to keep track
         return quoteList[position];
         break;
       }
     }
-    oldPosition =[];
+    oldPosition =[]; //Restore the array after all quotes are displayed
   } while (oldPosition.length < quoteList.length)
 }
 
@@ -30,7 +31,7 @@ function getRandomQuote(){
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
-    for (var i = 0; i < 6; i += 1 ) {
+    for (var i = 0; i < 6; i += 1 ) { //pick random element from letter
         color += letters[Math.floor(Math.random() * 16)];}
     return color;
 }
