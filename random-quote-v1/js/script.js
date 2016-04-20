@@ -9,12 +9,23 @@ var quoteList = [
   { quote : 'Either you run the day or the day runs you', source : 'Jim Rohn', tag : 'life' },
   { quote : 'The best way to find yourself is to lose yourself in the service of others', source : 'Mahatma Gandhi', tag : 'life' }
 ];
+var oldPosition = [];
 
 //Create getRandomQuote function
 function getRandomQuote(){
-  var position = Math.floor(Math.random() * quoteList.length);//Select a random position in the list of quote
-  return quoteList[position];
+  do {
+    for (position = 0; position < quoteList.length; position +=1) {
+      var position = Math.floor(Math.random() * quoteList.length);//Select a random position in the list of quote
+      if (oldPosition.indexOf(position) == -1) {
+        oldPosition.push(position);
+        return quoteList[position];
+        break;
+      }
+    }
+    oldPosition =[];
+  } while (oldPosition.length < quoteList.length)
 }
+
 //Create getrandomColor function
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
