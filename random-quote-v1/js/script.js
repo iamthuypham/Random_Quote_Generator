@@ -35,6 +35,8 @@ function getRandomColor() {
     return color;
 }
 
+//Refresh the quote after 30 seconds
+
 //Create printQuote function
 function printQuote(){
   var quoteObject = getRandomQuote(); //store return object from getRandomQuote function
@@ -53,8 +55,6 @@ function printQuote(){
     html += '</p>';
   };
 
-//<p class="source">David Allen<span class="citation">Making It All Work</span><span class="year">2009</span></p>
-
   document.getElementById('quote-box').innerHTML = html; //apply the string to the quote box
 
   var color = getRandomColor();//prepare html string for <body> style
@@ -71,5 +71,3 @@ function printQuote(){
 };
   document.getElementById('style').innerHTML = colorHTML; //apply random color to the body
 }
-//check if the new random position is in new list of position or not
-//newList.indexOf(position)
