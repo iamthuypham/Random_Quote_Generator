@@ -3,11 +3,11 @@
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 //Create an array of JavaScript objects to hold the data for your quotes.
 var quoteList = [
-  { quote : 'Do not pray for an easy life, pray for the strength to endure a difficult one.', source : 'Bruce Lee', year : 1950, tag : 'life' },
-  { quote : 'The best way to predict your future is to create it', source : 'Abraham Lincoln', tag : 'career' },
-  { quote : 'The only way to do great work is to love what you do',source : 'Steve Job', year : 2010, tag : 'career' },
-  { quote : 'Either you run the day or the day runs you', source : 'Jim Rohn', tag : 'life' },
-  { quote : 'The best way to find yourself is to lose yourself in the service of others', source : 'Mahatma Gandhi', tag : 'life' }
+  { quote : 'There are no limits. There are plateaus, but you must not stay there, you must go beyond them.', source : 'Bruce Lee', year : 1998, tag : 'life' },
+  { quote : 'You cannot escape the responsibility of tomorrow by evading it today.', source : 'Abraham Lincoln', citation :'Wise Words and Quotes' , year : 2000, tag : 'career' },
+  { quote : 'You‘ve got to start with the customer experience and work backwards to the technology.',source : 'Steve Jobs', year : 1997, tag : 'technology' },
+  { quote : 'Motivation is what gets you started. Habit is what keeps you going.', source : 'Jim Rohn', tag : 'motivation' },
+  { quote : 'The best way to find yourself is to lose yourself in the service of others', source : 'Mahatma Gandhi', citation : 'The Full Spectrum Synthesis Bible',year : 2001, tag : 'life' }
 ];
 var oldPosition = [];
 
@@ -36,6 +36,7 @@ function getRandomColor() {
 }
 
 //Refresh the quote after 30 seconds
+var intervalID = window.setInterval(printQuote,30000);
 
 //Create printQuote function
 function printQuote(){
